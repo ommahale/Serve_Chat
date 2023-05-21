@@ -1,0 +1,10 @@
+version: '3.1'
+services:
+  app:
+    build: .
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    environment:
+      - PORT=8000
