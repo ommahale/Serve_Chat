@@ -1,5 +1,22 @@
 version: '3.1'
 services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin15
+      POSTGRES_PASSWORD: adgzcb
+      POSTGRES_DB: serve_chat
+    volumes:
+      - ./data:/var/lib/postgresql/data
+  replica:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data_mdb:/data/db
+    
   app:
     build: .
     ports:
@@ -8,3 +25,6 @@ services:
       - .:/app
     environment:
       - PORT=8000
+    depends_on:
+      - db
+      - replica
