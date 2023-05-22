@@ -9,6 +9,13 @@ services:
       POSTGRES_DB: serve_chat
     volumes:
       - ./data:/var/lib/postgresql/data
+  replica:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data_mdb:/data/db
     
   app:
     build: .
@@ -20,3 +27,4 @@ services:
       - PORT=8000
     depends_on:
       - db
+      - replica

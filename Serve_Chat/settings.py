@@ -82,6 +82,20 @@ DATABASES = {
         'USER': os.getenv("PSQL_USER"),
         'PASSWORD': os.getenv("PSQL_PASSWORD"),
         'HOST': os.getenv("PSQL_HOST"),
+    },
+    'replica':{
+        'ENGINE': 'djongo',
+        'NAME': os.getenv("REPLICA"),
+        'CLIENT': {
+            'host': os.getenv("REPLICA_HOST"),
+        }
+    },
+    'replica1':{
+        'ENGINE': 'djongo',
+        'NAME': os.getenv("REPLICA1"),
+        'CLIENT': {
+            'host': os.getenv("REPLICA_HOST"),
+        }
     }
 }
 
