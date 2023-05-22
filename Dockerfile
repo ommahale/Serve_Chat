@@ -1,11 +1,10 @@
-FROM python:3.11.0-slim-buster
+FROM python:3.11
 WORKDIR /app
 COPY . .
 
-RUN pip3 --version
-RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
-RUN python3 manage.py migrate
+RUN pip --version
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 ENV PYTHONUNBUFFERED 1
 
 EXPOSE 8000
