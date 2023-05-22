@@ -15,7 +15,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./data:/data/db
+      - ./data_mdb:/data/db
     
   app:
     build: .
