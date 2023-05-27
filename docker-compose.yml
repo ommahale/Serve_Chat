@@ -18,11 +18,11 @@ services:
       - ./data_mdb:/data/db
     
   app:
-    build: .
-    ports:
-      - 8000:8000
+    build: ./core
+    # ports:
+    #   - 8000:8000
     volumes:
-      - .:/app
+      - ./core:/app
     environment:
       - PORT=8000
       - SECRET_KEY="django-insecure-uq_4of_lv4t1j7mg!i4-k#@&bbwfc7&b=0^^sp3=bx(%t05bba"
@@ -38,3 +38,11 @@ services:
     depends_on:
       - db
       - replica
+  nginx:
+    image: nginx:latest
+    volumes: 
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    ports:
+      - 8000:8000
