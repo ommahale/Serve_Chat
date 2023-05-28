@@ -3,7 +3,7 @@ This a distributed system based chat application made using Django Channels, Pos
 ## Project Architecture:
 
 <p align="center">
-    <img src="./images/a.png" width="500px" />
+    <img src="./images/a.png" width="700px" />
 </p>
 
 
