@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: D:\Docker\Serve_Chat\Serve_Chat\kompose.exe convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: D:\Docker\Serve_Chat\Serve_Chat\kompose.exe convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: app
+    spec:
+      containers:
+        - env:
+            - name: PORT
+              value: "8000"
+            - name: PSQL_DB
+              value: serve_chat
+            - name: PSQL_HOST
+              value: db
+            - name: PSQL_PASSWORD
+              value: adgzcb
+            - name: PSQL_PORT
+              value: "5432"
+            - name: PSQL_USER
+              value: admin15
+            - name: REPLICA
+              value: replica
+            - name: REPLICA1
+              value: replica1
+            - name: REPLICA_HOST
+              value: mongodb://replica:27017/
+            - name: SECRET_KEY
+              value: '"django-insecure-uq_4of_lv4t1j7mg!i4-k#@&bbwfc7&b=0^^sp3=bx(%t05bba"'
+          image: app
+          name: app
+          resources: {}
+          volumeMounts:
+            - mountPath: /app
+              name: app-claim0
+      restartPolicy: Always
+      volumes:
+        - name: app-claim0
+          persistentVolumeClaim:
+            claimName: app-claim0
+status: {}

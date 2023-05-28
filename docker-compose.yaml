@@ -9,6 +9,8 @@ services:
       POSTGRES_DB: serve_chat
     volumes:
       - ./data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
   replica:
     image: mongo
     restart: always
