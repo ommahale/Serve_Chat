@@ -1,6 +1,7 @@
 version: '3.1'
 services:
   db:
+    container_name: db
     image: postgres
     restart: always
     environment:
@@ -12,6 +13,7 @@ services:
     ports:
       - 5432:5432
   replica:
+    container_name: replica
     image: mongo
     restart: always
     ports:
@@ -20,11 +22,11 @@ services:
       - ./data_mdb:/data/db
     
   app:
-    build: ./core
+    build: ./.core
     # ports:
     #   - 8000:8000
     volumes:
-      - ./core:/app
+      - ./.core:/app
     environment:
       - PORT=8000
       - SECRET_KEY="django-insecure-uq_4of_lv4t1j7mg!i4-k#@&bbwfc7&b=0^^sp3=bx(%t05bba"
@@ -41,6 +43,7 @@ services:
       - db
       - replica
   nginx:
+    container_name: nginx
     image: nginx:latest
     volumes: 
       - ./nginx/conf.d:/etc/nginx/conf.d
