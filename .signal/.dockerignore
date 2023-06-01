@@ -1,1 +1,2 @@
-signal-env
+*-env
+*__pycache__
