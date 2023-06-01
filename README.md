@@ -23,3 +23,7 @@ docker-compose run app python manage.py migrate
 ```
 The server is now up and running in http://localhost:8000/
 the mapped database volume directory will be created as "data" in your project directory.
+
+## Setup development environment
+
+In order to setup local development environemnt you can simply create a virtual environment with -env in the end of environment name to ensure it is ignored by .dockerignore and .gitignore. `requirements.txt` for individual service is provided in it's directory.
