@@ -1,5 +1,6 @@
 venv
-core/Serve_Chat/__pycache__
 data
 data_mdb
 kompose.exe
+*__pycache__
+*/*-env
