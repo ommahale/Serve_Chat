@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["app","localhost"]
 
+CSRF_TRUSTED_ORIGINS = ["http://app","http://localhost:8000"]
 
 # Application definition
 
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'Serve_Chat.auth'
+    'core'
 ]
 
 MIDDLEWARE = [
